@@ -1,8 +1,11 @@
 #!/bin/sh
+# based on https://github.com/miyagawa/heroku-buildpack-perl/
 
 indent() {
   sed -u 's/^/       /'
 }
+
+set -e
 
 BUILD_DIR=$1
 CACHE_DIR=$2
@@ -27,8 +30,8 @@ fi
 echo "-----> Installing dependencies"
 cpanm --installdeps . 2>&1 | indent
 
-echo "-----> Installing Starman"
-cpanm Starman 2>&1 | indent
+echo "-----> Installing xls2csv"
+cpanm http://search.cpan.org/CPAN/authors/id/K/KE/KEN/xls2csv-1.07.tar.gz 2>&1 | indent
 
 if [ -d $BUILD_DIR/local ]; then
   rm -rf $CACHE_DIR/local
