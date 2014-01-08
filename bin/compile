@@ -1,5 +1,6 @@
 #!/bin/sh
 # based on https://github.com/miyagawa/heroku-buildpack-perl/
+# TODO: Make copy of xls2csv and host on S3.
 
 indent() {
   sed -u 's/^/       /'
