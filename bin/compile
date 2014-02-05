@@ -1,6 +1,5 @@
 #!/bin/sh
 # based on https://github.com/miyagawa/heroku-buildpack-perl/
-# TODO: Make copy of xls2csv and host on S3.
 
 indent() {
   sed -u 's/^/       /'
@@ -29,7 +28,7 @@ if ! [ -e $BUILD_DIR/local/bin/cpanm ]; then
 fi
 
 echo "-----> Installing xls2csv"
-cpanm http://search.cpan.org/CPAN/authors/id/K/KE/KEN/xls2csv-1.07.tar.gz 2>&1 | indent
+cpanm https://s3.amazonaws.com/staq-buildpack-files/xls2csv-1.07.tar.gz 2>&1 | indent
 
 if [ -d $BUILD_DIR/local ]; then
   rm -rf $CACHE_DIR/local
