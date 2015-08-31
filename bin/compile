@@ -29,7 +29,7 @@ cd $BUILD_DIR
 
 if ! [ -e $BUILD_DIR/local/bin/cpanm ]; then
   echo "-----> Bootstrapping cpanm"
-  curl -L --silent https://raw.github.com/miyagawa/cpanminus/master/cpanm | perl - App::cpanminus 2>&1 | indent
+  curl -L --silent https://s3.amazonaws.com/staq-buildpack-files/cpanm.txt | perl - App::cpanminus 2>&1 | indent
 fi
 
 echo "-----> Installing Text-CSV_XS"
@@ -39,7 +39,7 @@ echo "-----> Installing Unicode-Map"
 cpanm https://cpan.metacpan.org/authors/id/M/MS/MSCHWARTZ/Unicode-Map-0.112.tar.gz 2>&1 | indent
 
 echo "-----> Installing xls2csv"
-cpanm http://search.cpan.org/CPAN/authors/id/K/KE/KEN/xls2csv-1.07.tar.gz 2>&1 | indent
+cpanm https://s3.amazonaws.com/staq-buildpack-files/xls2csv-1.07.tar.gz 2>&1 | indent
 
 if [ -d $BUILD_DIR/local ]; then
   rm -rf $CACHE_DIR/local
