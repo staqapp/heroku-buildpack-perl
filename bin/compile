@@ -1,12 +1,11 @@
 #!/bin/sh
 # based on https://github.com/miyagawa/heroku-buildpack-perl/
 
-# Fail fast and fail hard.
-set -eo pipefail
-
 indent() {
   sed -u 's/^/       /'
 }
+
+set -e
 
 BUILD_DIR=$1
 CACHE_DIR=$2
